@@ -1,0 +1,37 @@
+# Virtual machine disks
+*.vdi
+*.vmdk
+*.vhd
+*.vhdx
+
+# Virtual machine exports
+*.ova
+*.ovf
+
+# VirtualBox configuration
+*.vbox
+*.vbox-prev
+
+# ISO images
+*.iso
+
+# VirtualBox snapshots and logs
+Snapshots/
+Logs/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDE/editor files
+.idea/
+.vscode/
+
+# Temporary files
+*.tmp
+*.log
+
+# Secrets and credentials
+*.key
+*.pem
+.env
