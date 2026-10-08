@@ -6,7 +6,16 @@ PowerShell automation skills.
 
 ## Project Status
 
-🚧 In development
+### Active Directory — Domain Join
+
+Successfully joined a Windows 11 workstation to the `corp.novatech.test` domain hosted on Windows Server 2025.
+
+- Configured the client to use internal Active Directory DNS.
+- Joined CLIENT01 using domain administrator credentials.
+- Verified domain membership and computer account registration.
+- Confirmed the workstation's secure channel with the domain.
+
+[View domain join documentation](docs/domain-join.md)
 
 ## Planned Environment
 
