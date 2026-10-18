@@ -17,6 +17,18 @@ Successfully joined a Windows 11 workstation to the `corp.novatech.test` domain 
 
 [View domain join documentation](docs/domain-join.md)
 
+### Active Directory User Provisioning
+
+Provisioned standard employee accounts in a Windows Server 2025 Active Directory environment, using both Active Directory Users and Computers (ADUC) and PowerShell.
+
+- Organized employee accounts into department-specific OUs.
+- Configured sign-in names and user account attributes.
+- Practiced `Get-ADUser`, `Set-ADUser`, and `New-ADUser`.
+- Successfully tested domain user authentication on a Windows 11 workstation.
+- Documented account verification and the provisioning workflow.
+
+[View implementation and screenshots](docs/ad-user-management.md)
+
 ## Planned Environment
 
 - Windows Server 2025
