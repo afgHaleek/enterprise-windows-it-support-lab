@@ -41,6 +41,18 @@ Provisioned standard employee accounts in a Windows Server 2025 Active Directory
 - PowerShell
 - VirtualBox
 
+
+## Windows Server & Active Directory Labs
+
+| Lab | Focus | Documentation |
+|---|---|---|
+| LAB-013 | AD group-based file access (AGDLP, NTFS and SMB permissions) | [Read lab](docs/labs/LAB-013-AD-Group-Based-File-Access.md) |
+| LAB-014 | Group Policy deployment, computer and user policies, security filtering, verification and troubleshooting | [Read lab](docs/labs/LAB-014-Group-Policy-Management.md) |
+
+**LAB-014 highlights:** configured a Finance Control Panel restriction and mapped drive; enforced a 60-second workstation inactivity lock; deployed a scoped ICMPv4 firewall rule; tested removable-disk write restrictions; and verified security filtering with two users in the same Finance OU. Screenshots and troubleshooting evidence are included in the lab report.
+
+> WMI filtering and GPO inheritance/precedence are planned topics, not completed tests in LAB-014.
+
 ## Planned Skills Demonstrated
 
 - Active Directory administration
