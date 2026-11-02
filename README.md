@@ -60,6 +60,8 @@ Optional project highlight:
 > **LAB-015:** Completed a simulated employee lifecycle in a Windows Server 2025 domain: created and validated a new user, verified AGDLP resource access, handled password resets and account lockouts, transferred an employee between departments with access revocation, disabled and retained a departing employee account, and exported an Active Directory account audit to CSV.
 r
 
+| LAB-016 | Remote Support and Windows Administration | RDP/NLA, access auditing, source-IP firewall hardening, WinRM, Kerberos PowerShell Remoting, remote health and event logs | [View Lab](docs/labs/LAB-016-Remote-Support-and-Administration.md) |
+
 ## Planned Skills Demonstrated
 
 - Active Directory administration
