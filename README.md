@@ -53,6 +53,13 @@ Provisioned standard employee accounts in a Windows Server 2025 Active Directory
 
 > WMI filtering and GPO inheritance/precedence are planned topics, not completed tests in LAB-014.
 
+| LAB-015 | Active Directory User Lifecycle (Joiner–Mover–Leaver): onboarding, group access, password reset, lockout investigation, department transfer, offboarding, PowerShell audit | [Read lab](docs/labs/LAB-015-Active-Directory-User-Lifecycle.md) |
+
+Optional project highlight:
+
+> **LAB-015:** Completed a simulated employee lifecycle in a Windows Server 2025 domain: created and validated a new user, verified AGDLP resource access, handled password resets and account lockouts, transferred an employee between departments with access revocation, disabled and retained a departing employee account, and exported an Active Directory account audit to CSV.
+r
+
 ## Planned Skills Demonstrated
 
 - Active Directory administration
