@@ -1,91 +1,164 @@
 # Enterprise Windows IT Support Lab
 
-A simulated enterprise Windows environment built to demonstrate practical
-IT support, system administration, networking, troubleshooting, and
-PowerShell automation skills.
+**Windows Server 2025 | Active Directory | DNS | DHCP | Group Policy | PowerShell | Windows 11**
 
-## Project Status
+A hands-on enterprise Windows infrastructure lab built in VirtualBox to develop and demonstrate practical skills in IT support, Windows administration, identity management, network services, access control, remote support, and troubleshooting.
 
-### Active Directory — Domain Join
+The project simulates a small organization's Windows domain environment, with a domain controller providing centralized authentication and network services to a domain-joined workstation.
 
-Successfully joined a Windows 11 workstation to the `corp.novatech.test` domain hosted on Windows Server 2025.
+Each completed lab documents the configuration, testing, verification, and technical evidence collected during implementation.
 
-- Configured the client to use internal Active Directory DNS.
-- Joined CLIENT01 using domain administrator credentials.
-- Verified domain membership and computer account registration.
-- Confirmed the workstation's secure channel with the domain.
+## 1. Infrastructure Overview
 
-[View domain join documentation](docs/domain-join.md)
+| Component | Configuration |
+|---|---|
+| Virtualization | Oracle VirtualBox |
+| Domain Controller | DC01 — Windows Server 2025 |
+| Client Workstation | CLIENT01 — Windows 11 |
+| Active Directory Domain | `corp.novatech.test` |
+| NetBIOS Domain | `NOVATECH` |
+| Domain Controller IP | `192.168.10.10` |
+| Client IP | `192.168.10.100` |
+| Internal Network | `NovaTech-LAN` |
+| Directory Services | Active Directory Domain Services (AD DS) |
+| Network Services | DNS and DHCP |
+| Centralized Management | Group Policy and PowerShell |
+| File Services | SMB shares with NTFS permissions |
+| Remote Administration | RDP and PowerShell Remoting (WinRM/Kerberos) |
 
-### Active Directory User Provisioning
+### Environment Architecture
 
-Provisioned standard employee accounts in a Windows Server 2025 Active Directory environment, using both Active Directory Users and Computers (ADUC) and PowerShell.
+```text
+                 Fedora Workstation
+                   VirtualBox Host
+                          |
+          +---------------+---------------+
+          |                               |
+     Windows Server 2025             Windows 11
+           DC01                       CLIENT01
+     192.168.10.10                192.168.10.100
+          |                               |
+          +---------- NovaTech-LAN -------+
+                          |
+                  corp.novatech.test
 
-- Organized employee accounts into department-specific OUs.
-- Configured sign-in names and user account attributes.
-- Practiced `Get-ADUser`, `Set-ADUser`, and `New-ADUser`.
-- Successfully tested domain user authentication on a Windows 11 workstation.
-- Documented account verification and the provisioning workflow.
+DC01:
+  - Active Directory Domain Services
+  - DNS Server
+  - DHCP Server
+  - Group Policy
+  - SMB File Services
+  - RDP / WinRM
 
-[View implementation and screenshots](docs/ad-user-management.md)
+CLIENT01:
+  - Domain-joined workstation
+  - Domain user authentication
+  - Group Policy application
+  - File share access
+  - Remote administration testing
+```
 
-## Planned Environment
+## 2. Implemented Infrastructure
 
-- Windows Server 2025
-- Windows 11 client
-- Active Directory Domain Services
-- DNS
-- DHCP
-- Group Policy
-- File Services
-- PowerShell
-- VirtualBox
+### Active Directory and Identity Management
 
+- Deployed a Windows Server 2025 Active Directory domain.
+- Joined a Windows 11 workstation to `corp.novatech.test`.
+- Created department-based Organizational Units (OUs).
+- Provisioned and managed employee accounts using ADUC and PowerShell.
+- Configured security groups for role-based resource access.
+- Practiced user onboarding, department transfers, password resets, account lockouts, and offboarding.
 
-## Windows Server & Active Directory Labs
+### Network Services
 
-| Lab | Focus | Documentation |
+- Configured Active Directory-integrated DNS for internal name resolution.
+- Configured DHCP services for client IP address allocation.
+- Verified domain connectivity, name resolution, and workstation registration.
+
+### Group Policy Management
+
+- Applied user and computer configuration policies.
+- Configured Control Panel restrictions and mapped network drives.
+- Implemented workstation inactivity locking.
+- Tested Windows Firewall ICMP rules and removable storage restrictions.
+- Verified Group Policy security filtering and policy application.
+
+### File Services and Access Control
+
+- Configured SMB file shares.
+- Applied NTFS and share permissions.
+- Implemented Active Directory group-based access using the AGDLP model.
+- Tested authorized and unauthorized access to shared resources.
+
+### Remote Support and Administration
+
+- Configured Remote Desktop Protocol (RDP) with Network Level Authentication.
+- Tested RDP access and firewall restrictions.
+- Configured and verified Windows Remote Management (WinRM).
+- Used Kerberos-authenticated PowerShell Remoting.
+- Executed remote administration and system health checks.
+- Investigated Windows event logs.
+
+## 3. Lab Documentation
+
+The following completed exercises include configuration steps, commands, verification results, and supporting evidence.
+
+| Lab | Technical Focus | Documentation |
 |---|---|---|
-| LAB-013 | AD group-based file access (AGDLP, NTFS and SMB permissions) | [Read lab](docs/labs/LAB-013-AD-Group-Based-File-Access.md) |
-| LAB-014 | Group Policy deployment, computer and user policies, security filtering, verification and troubleshooting | [Read lab](docs/labs/LAB-014-Group-Policy-Management.md) |
+| Domain Join | Windows 11 domain membership, DNS configuration, secure channel verification | [View documentation](docs/domain-join.md) |
+| AD User Provisioning | Organizational Units, user attributes, PowerShell user management, authentication testing | [View documentation](docs/ad-user-management.md) |
+| LAB-013 | Active Directory group-based file access, AGDLP, SMB and NTFS permissions | [View lab](docs/labs/LAB-013-AD-Group-Based-File-Access.md) |
+| LAB-014 | Group Policy deployment, security filtering, drive mapping, firewall and workstation restrictions | [View lab](docs/labs/LAB-014-Group-Policy-Management.md) |
+| LAB-015 | Active Directory user lifecycle: onboarding, transfer, offboarding, account lockouts and auditing | [View lab](docs/labs/LAB-015-Active-Directory-User-Lifecycle.md) |
+| LAB-016 | RDP, NLA, firewall access control, WinRM, Kerberos PowerShell Remoting and remote diagnostics | [View lab](docs/labs/LAB-016-Remote-Support-and-Administration.md) |
 
-**LAB-014 highlights:** configured a Finance Control Panel restriction and mapped drive; enforced a 60-second workstation inactivity lock; deployed a scoped ICMPv4 firewall rule; tested removable-disk write restrictions; and verified security filtering with two users in the same Finance OU. Screenshots and troubleshooting evidence are included in the lab report.
+## 4. Technical Skills Demonstrated
 
-> WMI filtering and GPO inheritance/precedence are planned topics, not completed tests in LAB-014.
+| Area | Practical Experience |
+|---|---|
+| Windows Server Administration | Server configuration, role management, service verification |
+| Active Directory | Domain administration, OUs, users, groups, account lifecycle |
+| Windows Client Support | Domain joining, user authentication, policy verification |
+| DNS and DHCP | Internal DNS configuration, DHCP administration, connectivity testing |
+| Group Policy | Policy deployment, scope, security filtering and troubleshooting |
+| Access Management | AGDLP, NTFS permissions, SMB share permissions |
+| Remote Support | RDP, NLA, Windows Firewall and PowerShell Remoting |
+| PowerShell | AD management, system administration, diagnostics and audit exports |
+| Troubleshooting | Connectivity testing, access failures, event log investigation |
+| Documentation | Technical procedures, verification records and screenshot evidence |
 
-| LAB-015 | Active Directory User Lifecycle (Joiner–Mover–Leaver): onboarding, group access, password reset, lockout investigation, department transfer, offboarding, PowerShell audit | [Read lab](docs/labs/LAB-015-Active-Directory-User-Lifecycle.md) |
+## 5. Tools and Technologies
 
-Optional project highlight:
+- **Operating Systems:** Windows Server 2025, Windows 11, Fedora Linux
+- **Virtualization:** Oracle VirtualBox
+- **Identity:** Active Directory Domain Services, Kerberos
+- **Networking:** TCP/IP, DNS, DHCP
+- **Administration:** PowerShell, Windows Admin Tools, Group Policy Management
+- **File Services:** SMB, NTFS, AGDLP
+- **Remote Management:** RDP, WinRM, PowerShell Remoting
+- **Version Control:** Git and GitHub
 
-> **LAB-015:** Completed a simulated employee lifecycle in a Windows Server 2025 domain: created and validated a new user, verified AGDLP resource access, handled password resets and account lockouts, transferred an employee between departments with access revocation, disabled and retained a departing employee account, and exported an Active Directory account audit to CSV.
-r
+## 6. Upcoming Labs
 
-| LAB-016 | Remote Support and Windows Administration | RDP/NLA, access auditing, source-IP firewall hardening, WinRM, Kerberos PowerShell Remoting, remote health and event logs | [View Lab](docs/labs/LAB-016-Remote-Support-and-Administration.md) |
+| Lab | Planned Focus |
+|---|---|
+| LAB-017 | Windows troubleshooting: DNS, DHCP, Group Policy and authentication failures |
+| LAB-018 | Windows Server backup, file recovery and recovery verification |
+| LAB-019 | Real-world helpdesk incident scenarios, diagnosis, resolution and ticket documentation |
 
-## Planned Skills Demonstrated
+Additional exercises may be introduced based on troubleshooting findings and practical IT support requirements.
 
-- Active Directory administration
-- Windows client administration
-- DNS and DHCP configuration
-- Group Policy management
-- User and group management
-- File and NTFS permissions
-- Network troubleshooting
-- IT incident troubleshooting
-- PowerShell automation
-- Technical documentation
+## 7. Project Objectives
 
-## Lab Architecture
+This lab is designed to strengthen practical skills relevant to:
 
-Architecture documentation will be added as the environment is built.
+- IT Support Technician
+- Service Desk Analyst (L1/L2)
+- Desktop Support Technician
+- Junior Windows System Administrator
 
-## Troubleshooting Scenarios
-
-Realistic IT support incidents will be introduced, diagnosed, resolved,
-and documented throughout the project.
+The focus is on understanding how Windows infrastructure operates, diagnosing common support issues, applying appropriate fixes, verifying outcomes, and maintaining clear technical documentation.
 
 ## Disclaimer
 
-This is a personal home lab created for learning and portfolio purposes.
-All users, company names, systems, and incidents used in this project are fictional.# enterprise-windows-it-support-lab
-Description: Enterprise Windows lab demonstrating Active Directory, DNS, DHCP, Group Policy, PowerShell, access control and real-world IT troubleshooting.
+This is an independently maintained home lab for technical learning and portfolio development. All organizations, users, incidents, and company information are fictional. The environment does not represent a production business network.
